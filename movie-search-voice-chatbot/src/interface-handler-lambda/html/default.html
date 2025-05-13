@@ -1,0 +1,199 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <title>Movie Search Voice Chatbot</title>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <meta name="theme-color" content="#f9fafb" />
+  <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent" />
+  <meta name="apple-mobile-web-app-capable" content="yes" />
+
+  <link href="https://m.media-amazon.com/images/G/01/digital/video/DVUI/favicons/favicon.png" rel="shortcut icon"
+    type="image/x-icon" />
+  <link href="https://m.media-amazon.com/images/G/01/digital/video/DVUI/favicons/apple-touch-icon-57x57.png"
+    rel="apple-touch-icon" sizes="57x57" />
+  <link href="https://m.media-amazon.com/images/G/01/digital/video/DVUI/favicons/apple-touch-icon-60x60.png"
+    rel="apple-touch-icon" sizes="60x60" />
+  <link href="https://m.media-amazon.com/images/G/01/digital/video/DVUI/favicons/apple-touch-icon-72x72.png"
+    rel="apple-touch-icon" sizes="72x72" />
+  <link href="https://m.media-amazon.com/images/G/01/digital/video/DVUI/favicons/apple-touch-icon-76x76.png"
+    rel="apple-touch-icon" sizes="76x76" />
+  <link href="https://m.media-amazon.com/images/G/01/digital/video/DVUI/favicons/apple-touch-icon-114x114.png"
+    rel="apple-touch-icon" sizes="114x114" />
+  <link href="https://m.media-amazon.com/images/G/01/digital/video/DVUI/favicons/apple-touch-icon-120x120.png"
+    rel="apple-touch-icon" sizes="120x120" />
+  <link href="https://m.media-amazon.com/images/G/01/digital/video/DVUI/favicons/apple-touch-icon-144x144.png"
+    rel="apple-touch-icon" sizes="144x144" />
+  <link href="https://m.media-amazon.com/images/G/01/digital/video/DVUI/favicons/apple-touch-icon-152x152.png"
+    rel="apple-touch-icon" sizes="152x152" />
+  <link href="https://m.media-amazon.com/images/G/01/digital/video/DVUI/favicons/apple-touch-icon-precomposed.png"
+    rel="apple-touch-icon-precomposed" />
+  <link href="https://m.media-amazon.com/images/G/01/digital/video/DVUI/favicons/apple-touch-icon.png"
+    rel="apple-touch-icon" />
+  <link href="https://m.media-amazon.com/images/G/01/digital/video/DVUI/favicons/favicon-16x16.png" rel="icon"
+    sizes="16x16" type="image/png" />
+  <link href="https://m.media-amazon.com/images/G/01/digital/video/DVUI/favicons/favicon-32x32.png" rel="icon"
+    sizes="32x32" type="image/png" />
+  <link href="https://m.media-amazon.com/images/G/01/digital/video/DVUI/favicons/favicon-96x96.png" rel="icon"
+    sizes="96x96" type="image/png" />
+  <link href="https://m.media-amazon.com/images/G/01/digital/video/DVUI/favicons/favicon-128x128.png" rel="icon"
+    sizes="128x128" type="image/png" />
+  <link href="https://m.media-amazon.com/images/G/01/digital/video/DVUI/favicons/favicon-196x196.png" rel="icon"
+    sizes="196x196" type="image/png" />
+  <link type="text/css" rel="stylesheet" href="assets/css/bootstrap.min.css">
+  <link type="text/css" rel="stylesheet" href="assets/css/bootstrap-icons.min.css" />
+  <link type="text/css" rel="stylesheet"
+    href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;700&amp;display=swap" />
+  <link type="text/css" rel="stylesheet" href="assets/css/stylesheet.css" />
+  <script type="text/javascript" src="assets/js/jquery-3.7.1.min.js"></script>
+  <script type="text/javascript" src="assets/js/bootstrap.bundle.min.js"></script>
+  <script type="text/javascript" src="assets/js/javascript.js" defer></script>
+</head>
+
+<body>
+  <div id="default-container">
+    <div id="header">
+      <div id="title" class="row">
+        <div class="col-3" style="text-align: left">
+          <gear id="openControlPanel" type="button" data-bs-toggle="offcanvas" data-bs-target="#offcanvasBottom"
+            aria-controls="offcanvasBottom">
+            <i class="bi bi-list" hidden></i>
+          </gear>
+        </div>
+        <div class="col-6">
+          <img style="height: 50px" src="./assets/img/PV_App_Icon_Tiles_Landscape_Plus_Blue.png" />
+          <br />
+          <span id="subtitle">Assistant</span>
+        </div>
+        <div class="col-3" style="text-align: right">
+          <button id="status" disabled></button>
+        </div>
+      </div>
+    </div>
+    <div id="content">
+      <div id="messages">
+        <div id="splash">
+          <img src="assets/img/PV_App_Icon_Tiles_Circle_Plus_Blue.png" width="100px" />
+          <div id="splash-title">Movie Search Voice Chatbot</div>
+          <div id="splash-subtitle">
+            Your generative-AI entertainment assistant
+          </div>
+          <div id="splash-built-by">Built in 🌵 by the AWS Plus team</div>
+        </div>
+      </div>
+    </div>
+    <div id="footer">
+      <div id="input-controls" class="row">
+        <div>
+          <audio id="polly" playsinline></audio>
+
+          <div class="input-group button-group">
+            <button id="startProcessButton" type="button" class="btn btn-success btn-lg" style="display: none">
+              <i class="bi bi-power"></i>
+              <span class="collapse-button-text">Start</span>
+            </button>
+            <button id="stopProcessButton" style="display: none" type="button" class="btn btn-success btn-lg"
+              style="display: none">
+              <i class="bi bi-stop-circle"></i>
+              <span class="collapse-button-text">Stop</span>
+            </button>
+            <textarea id="inputText" class="form-control custom-control" style="resize: none" disabled></textarea>
+
+            <button id="speakButton" type="button" class="btn btn-secondary btn-lg">
+              <i class="bi bi-mic"></i>
+              <!-- Speak -->
+            </button>
+
+            <button id="sendButton" type="button" class="btn btn-success btn-lg" disabled>
+              <i class="bi bi-send"></i>
+              <span class="collapse-button-text">Submit</span>
+            </button>
+          </div>
+        </div>
+      </div>
+      <div id="error">
+        <div class="modal fade" id="error-modal" tabindex="-1" role="dialog" aria-labelledby="error-modal-title-center"
+          aria-hidden="true">
+          <div class="modal-dialog modal-dialog-centered" role="document">
+            <div class="modal-content">
+              <div class="modal-header">
+                <h1 class="modal-title" id="error-modal-title-center">
+                  Modal title
+                </h1>
+              </div>
+              <div class="modal-body" id="error-modal-body">
+                body goes here
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div id="copyright">
+        Built in 🌵 by the AWS Plus team for NAB 2025<br />
+        &copy; 2025, Amazon Web Services, Inc. or its affiliates & &copy;
+        1990-2025 by IMDb.com, Inc.
+      </div>
+    </div>
+    <div id="control-panel">
+      <div class="offcanvas offcanvas-bottom" tabindex="-1" id="offcanvasBottom" aria-labelledby="offcanvasBottomLabel">
+        <div class="offcanvas-header">
+          <h5 class="offcanvas-title" id="offcanvasBottomLabel">Settings</h5>
+          <button type="button" class="btn-close text-reset" data-bs-dismiss="offcanvas" aria-label="Close"></button>
+        </div>
+        <div class="offcanvas-body small">
+          <div class="control-panel">
+            <label for="scenarioSelection" class="form-label">Scenario selection:
+              <b id="scenarioSelectionDisplay"></b>
+            </label>
+            <select id="scenarioSelection" class="form-select">
+              {{SCENARIO_OPTIONS}}
+            </select>
+            <br />
+            <hr />
+            <br />
+            <label for="languageCode" class="form-label">Language selection:
+              <b id="languageCodeDisplay"></b>
+            </label>
+            <select id="languageCode" class="form-select">
+              <option value="en-US">🇺🇸 English</option>
+              <option value="es-US">🇪🇸 Spanish</option>
+              <option value="fr-FR">🇫🇷 French</option>
+              <option value="de-DE">🇩🇪 German</option>
+            </select>
+            <br />
+            <hr />
+            <br />
+            <label for="audioPlaybackSpeed" class="form-label">Audio playback speed:
+              <b id="audioPlaybackSpeedDisplay"></b>
+            </label>
+            <input type="range" class="form-range" min="1" max="5" id="audioPlaybackSpeed" />
+            <br />
+            <br />
+            <br />
+            <br />
+          </div>
+        </div>
+      </div>
+    </div>
+    <div id="mic-background"></div>
+    <div id="mic-layer">
+      <div class="mic-object">
+        <div class="mic-outline"></div>
+        <div class="mic-outline" id="mic-delayed"></div>
+        <div class="mic-image" id="mic-circle-in">
+          <svg class="mic-icon" version="1.1" xmlns="http://www.w3.org/2000/svg"
+            xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px" viewBox="0 0 1000 1000"
+            enable-background="new 0 0 1000 1000" xml:space="preserve" style="fill: #ffffff">
+            <g>
+              <path
+                d="M500,683.8c84.6,0,153.1-68.6,153.1-153.1V163.1C653.1,78.6,584.6,10,500,10c-84.6,0-153.1,68.6-153.1,153.1v367.5C346.9,615.2,415.4,683.8,500,683.8z M714.4,438.8v91.9C714.4,649,618.4,745,500,745c-118.4,0-214.4-96-214.4-214.4v-91.9h-61.3v91.9c0,141.9,107.2,258.7,245,273.9v124.2H346.9V990h306.3v-61.3H530.6V804.5c137.8-15.2,245-132.1,245-273.9v-91.9H714.4z" />
+            </g>
+          </svg>
+        </div>
+      </div>
+    </div>
+  </div>
+</body>
+
+</html>

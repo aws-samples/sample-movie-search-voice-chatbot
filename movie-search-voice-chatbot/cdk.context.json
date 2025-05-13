@@ -1,0 +1,92 @@
+{
+  "vpc-provider:account=396608815453:filter.isDefault=true:region=us-east-1:returnAsymmetricSubnets=true": {
+    "vpcId": "vpc-033b2d2f972195652",
+    "vpcCidrBlock": "172.31.0.0/16",
+    "ownerAccountId": "396608815453",
+    "availabilityZones": [],
+    "subnetGroups": [
+      {
+        "name": "Public",
+        "type": "Public",
+        "subnets": [
+          {
+            "subnetId": "subnet-076e380bba496ec26",
+            "cidr": "172.31.16.0/20",
+            "availabilityZone": "us-east-1a",
+            "routeTableId": "rtb-03f660022acffc9dc"
+          },
+          {
+            "subnetId": "subnet-04bfef93b680c15f2",
+            "cidr": "172.31.32.0/20",
+            "availabilityZone": "us-east-1b",
+            "routeTableId": "rtb-03f660022acffc9dc"
+          },
+          {
+            "subnetId": "subnet-04bda0d20e7507d5a",
+            "cidr": "172.31.0.0/20",
+            "availabilityZone": "us-east-1c",
+            "routeTableId": "rtb-03f660022acffc9dc"
+          },
+          {
+            "subnetId": "subnet-0645c31a54de25160",
+            "cidr": "172.31.80.0/20",
+            "availabilityZone": "us-east-1d",
+            "routeTableId": "rtb-03f660022acffc9dc"
+          },
+          {
+            "subnetId": "subnet-0e4184c5d32bf90d3",
+            "cidr": "172.31.48.0/20",
+            "availabilityZone": "us-east-1e",
+            "routeTableId": "rtb-03f660022acffc9dc"
+          },
+          {
+            "subnetId": "subnet-0c34689f6407366b0",
+            "cidr": "172.31.64.0/20",
+            "availabilityZone": "us-east-1f",
+            "routeTableId": "rtb-03f660022acffc9dc"
+          }
+        ]
+      }
+    ]
+  },
+  "hosted-zone:account=396608815453:domainName=pva.aoa.aws.dev:region=us-east-1": {
+    "Id": "/hostedzone/Z0855300P45LTEO1NIUW",
+    "Name": "pva.aoa.aws.dev."
+  },
+  "vpc-provider:account=396608815453:filter.isDefault=true:region=us-east-2:returnAsymmetricSubnets=true": {
+    "vpcId": "vpc-056d2715c815e6c03",
+    "vpcCidrBlock": "172.31.0.0/16",
+    "ownerAccountId": "396608815453",
+    "availabilityZones": [],
+    "subnetGroups": [
+      {
+        "name": "Public",
+        "type": "Public",
+        "subnets": [
+          {
+            "subnetId": "subnet-0b95d7e8ceec2346d",
+            "cidr": "172.31.0.0/20",
+            "availabilityZone": "us-east-2a",
+            "routeTableId": "rtb-087df365726d1e86c"
+          },
+          {
+            "subnetId": "subnet-0c63aa6118112d3d2",
+            "cidr": "172.31.16.0/20",
+            "availabilityZone": "us-east-2b",
+            "routeTableId": "rtb-087df365726d1e86c"
+          },
+          {
+            "subnetId": "subnet-04cfa7257dbd297af",
+            "cidr": "172.31.32.0/20",
+            "availabilityZone": "us-east-2c",
+            "routeTableId": "rtb-087df365726d1e86c"
+          }
+        ]
+      }
+    ]
+  },
+  "hosted-zone:account=396608815453:domainName=pva.aoa.aws.dev:region=us-east-2": {
+    "Id": "/hostedzone/Z0855300P45LTEO1NIUW",
+    "Name": "pva.aoa.aws.dev."
+  }
+}

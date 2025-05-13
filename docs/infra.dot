@@ -1,0 +1,33 @@
+digraph INFRA {
+  node [ color = "black", fillcolor = "#E6E6E6", height =1, style = "filled,bold,rounded", fontname = "Arial" ];
+  "vpc" [ label = "vpc
+(AWS::EC2::VPC)", shape =rectangle ];
+  "loadBalancerSecurityGroup" [ label = "loadBalancerSecurityGroup
+(AWS::EC2::SecurityGroup)", shape =rectangle ];
+  "loadBalancer" [ label = "loadBalancer
+(AWS::ElasticLoadBalancingV2::ApplicationLoadBalancer)", shape =rectangle, fillcolor = "#E78F81" ];
+  "dnsRecord" [ label = "dnsRecord
+(AWS::Route53::RecordSet)", shape =rectangle ];
+  "certificate" [ label = "certificate
+(AWS::CertificateManager::Certificate)", shape =rectangle ];
+  "utteranceQueueFifo" [ label = "utteranceQueueFifo
+(AWS::SQS::Queue)", shape =rectangle, fillcolor = "#CCE0AC" ];
+  "websocketTable" [ label = "websocketTable
+(AWS::DynamoDB::Table)", shape =cylinder, fillcolor = "#FFCFB3" ];
+  "websocketHandlerRole" [ label = "websocketHandlerRole
+(AWS::IAM::Role)", shape =rectangle ];
+  "websocketHandler" [ label = "websocketHandler
+(AWS::Lambda::Function)", shape =rectangle, fillcolor = "#B7E0FF" ];
+  "websocketApi" [ label = "websocketApi
+(AWS::ApiGatewayV2::Api)", shape =rectangle, fillcolor = "#E78F81" ];
+  "webSocketStageDev" [ label = "webSocketStageDev
+(AWS::ApiGatewayV2::Stage)", shape =rectangle, fillcolor = "#E78F81" ];
+  "loadBalancerSecurityGroup" -> "vpc";
+  "loadBalancer" -> "vpc";
+  "loadBalancer" -> "loadBalancerSecurityGroup";
+  "dnsRecord" -> "loadBalancer";
+  "certificate" -> "dnsRecord";
+  "websocketHandler" -> "websocketHandlerRole";
+  "websocketApi" -> "websocketHandler";
+  "webSocketStageDev" -> "websocketApi";
+}

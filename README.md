@@ -12,13 +12,13 @@ movie-search-voice-chatbot/
 ├── lib/                          # Infrastructure as code definitions
 ├── src/                          # Application source code
 │   ├── interface-handler-lambda/ # Web interface and WebSocket handling
-│   │   ├── assets/              # Static assets (CSS, images)
-│   │   ├── html/                # HTML templates
-│   │   └── lib/                 # Client-side JavaScript
-│   ├── movie-database-lambda/   # OpenSearch movie database integration
+│   │   ├── assets/               # Static assets (CSS, images)
+│   │   ├── html/                 # HTML templates
+│   │   └── lib/                  # Client-side JavaScript
+│   ├── movie-database-lambda/    # OpenSearch movie database integration
 │   ├── utterance-handler-lambda/ # Natural language processing with Bedrock
 │   └── websocket-handler-lambda/ # WebSocket connection management
-└── test/                        # Test files for infrastructure
+└── test/                         # Test files for infrastructure
 ```
 
 ## Usage Instructions
@@ -162,7 +162,7 @@ Additional Services:
 
 ## Architecture
 
-![Architecture diagram](/docs/nab-2025-movie-search-chatbot.drawio.svg)
+![Architecture diagram](/docs/movie-search-chatbot.drawio.svg)
 
 1. The client initiates a request to the application URL using their web browser.
 2. The client is unauthenticated and is redirected to a login page.
